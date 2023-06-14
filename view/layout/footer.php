@@ -16,7 +16,7 @@
 <script src="<?= base_url() ?>/assets/libs/swal2/dist/sweetalert2.min.js"></script>
 <script src="<?= base_url() ?>/assets/libs/datatable/datatables.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="<?= base_url() ?>/assets/libs/select2/select2.min.js"></script>
 
 <!-- Theme JS -->
 <script src="<?= base_url() ?>/assets/js/theme.min.js"></script>

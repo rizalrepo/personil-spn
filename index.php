@@ -25,7 +25,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/theme.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/custom.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/custom.min.css">
     <title>Login Sistem</title>
 </head>
 
@@ -88,7 +88,7 @@
     <!-- Theme JS -->
     <script src="<?= base_url() ?>/assets/js/theme.min.js"></script>
     <!-- Custom JS -->
-    <script src="<?= base_url() ?>/assets/js/custom.js"></script>
+    <script src="<?= base_url() ?>/assets/js/custom.min.js"></script>
 </body>
 
 </html>
@@ -114,6 +114,12 @@ if (isset($_POST['log'])) {
         $_SESSION['level'] = $level;
         $_SESSION['nm_user'] = $usr;
 
+        if ($level == 1 || $level == 2) {
+            $url = 'view/admin/';
+        } else if ($level == 3) {
+            $url = 'view/personil/';
+        }
+
         echo "
         <script type='text/javascript'>
             setTimeout(function () {    
@@ -126,7 +132,7 @@ if (isset($_POST['log'])) {
                 });     
             },10);  
             window.setTimeout(function(){ 
-                window.location.replace('view/admin/');
+                window.location.replace('$url');
             } ,2000);   
         </script>";
     } else {

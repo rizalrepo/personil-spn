@@ -29,7 +29,7 @@ if (!isset($_SESSION['login'])) {
     <link href="<?= base_url() ?>/assets/libs/swal2/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets/libs/datatable/datatables.min.css" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="<?= base_url() ?>/assets/libs/select2/select2.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/theme.min.css">
@@ -121,11 +121,33 @@ if (!isset($_SESSION['login'])) {
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'personil') {
                                                                 echo 'active';
-                                                            } ?>" href="<?= base_url() ?>/view/admin/personil">
+                                                            } ?>" href="<?= base_url() ?>/view/admin/personil/">
                                 <i class="nav-icon fas fa-id-badge me-2"></i> Data Personil
                             </a>
                         </li>
                     <?php } else if ($_SESSION['level'] == 2) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'dashboard') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/">
+                                <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
+                            </a>
+                        </li>
+                    <?php } else if ($_SESSION['level'] == 3) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'dashboard') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/personil/">
+                                <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'absensi') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/personil/absensi/">
+                                <i class="fas fa-map-marked-alt nav-icon icon-xs me-2"></i> Absensi Personil
+                            </a>
+                        </li>
                     <?php } ?>
                 </ul>
             </div>

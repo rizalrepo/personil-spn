@@ -17,6 +17,7 @@ if (mysqli_connect_errno()) {
   echo mysqli_connect_error();
 }
 
+$set = $con->query("SELECT * FROM setting WHERE id = 1")->fetch_array();
 
 function base_url($url = null)
 {

@@ -65,7 +65,7 @@ if (!isset($_SESSION['login'])) {
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if (
-                                                                $page != 'user' || $page != 'pangkat' || $page != 'jabatan'
+                                                                $page != 'user' || $page != 'pangkat' || $page != 'jabatan' || $page != 'set'
                                                             ) {
                                                                 echo 'collapsed';
                                                             } ?>" href="#!" data-bs-toggle="collapse" data-bs-target="#navPages" aria-expanded="false" aria-controls="navPages">
@@ -73,7 +73,7 @@ if (!isset($_SESSION['login'])) {
                                 </i> Data Master
                             </a>
                             <div id="navPages" class="collapse <?php if (
-                                                                    $page == 'user' || $page == 'pangkat' || $page == 'jabatan'
+                                                                    $page == 'user' || $page == 'pangkat' || $page == 'jabatan' || $page == 'set'
                                                                 ) {
                                                                     echo 'show';
                                                                 } ?>" data-bs-parent="#sideNavbar">
@@ -111,6 +111,18 @@ if (!isset($_SESSION['login'])) {
                                             <small>
                                                 <i class="fas fa-sitemap me-1"></i>
                                                 Data Jabatan
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'set'
+                                                            ) {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/setting/">
+                                            <small>
+                                                <i class="fas fa-cogs me-1"></i>
+                                                Setting Aplikasi
                                             </small>
                                         </a>
                                     </li>

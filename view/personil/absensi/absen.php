@@ -1,4 +1,10 @@
-<?php require '../../../app/config.php'; ?>
+<?php
+require '../../../app/config.php';
+if (!isset($_SESSION['login'])) {
+    echo "<script> alert('Silahkan login terlebih dahulu'); </script>";
+    echo "<meta http-equiv='refresh' content='0; url=" . base_url('index') . "'>";
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,13 +118,13 @@
 
 
             //RADIUS KANTOR
-            var lat_kantor = -3.3418973;
-            var lng_kantor = 114.6069257;
+            var lat_kantor = <?= $set['latitude'] ?>;
+            var lng_kantor = <?= $set['longitude'] ?>;
             var circle = L.circle([lat_kantor, lng_kantor], {
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.5,
-                radius: 50
+                radius: <?= $set['radius'] ?>
             }).addTo(map);
         }
 

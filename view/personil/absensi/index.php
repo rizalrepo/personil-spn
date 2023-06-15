@@ -75,9 +75,10 @@ include_once '../../layout/footer.php';
         if ("geolocation" in navigator) { //check geolocation available 
             //try to get user current location using getCurrentPosition() method
             navigator.geolocation.getCurrentPosition(function(position) {
-                console.log(latlondist(position.coords.latitude, position.coords.longitude, -3.3418973, 114.6069257));
 
-                if (latlondist(position.coords.latitude, position.coords.longitude, -3.3418973, 114.6069257) <= 50) {
+                console.log(position.coords.latitude, position.coords.longitude);
+
+                if (latlondist(position.coords.latitude, position.coords.longitude, <?= $set['latitude'] ?>, <?= $set['longitude'] ?>) <= <?= $set['radius'] ?>) {
 
                     popupCenter('absen', 'SPN POLDA KALSEL - Absensi Personil', '450', '600');
                 } else {

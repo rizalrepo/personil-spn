@@ -4,6 +4,11 @@ if (!isset($_SESSION['login'])) {
     echo "<script> alert('Silahkan login terlebih dahulu'); </script>";
     echo "<meta http-equiv='refresh' content='0; url=" . base_url('index') . "'>";
 }
+
+$user = $con->query("SELECT * FROM user WHERE id_user = '$_SESSION[id_user]'")->fetch_array();
+$absen = $user['id_personil'];
+$tanggal = date('Y-m-d');
+$jamSekarang = date('H:i');
 ?>
 
 <!DOCTYPE html>
@@ -47,17 +52,18 @@ if (!isset($_SESSION['login'])) {
     <div class="container-fluid">
         <div class="card card-body border border-dark-danger mt-2">
             <div class="row">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form id="form-absen-masuk" action="" method="POST" enctype="multipart/form-data">
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                        <input type="hidden" name="foto_masuk" class="img-masuk">
                         <video id="video" width="100%" height="100%" autoplay muted playsinline></video>
                     </div>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-6">
-                        <input type="hidden" id="lat">
-                        <input type="hidden" id="lng">
+                        <input type="hidden" id="lat" name="lat">
+                        <input type="hidden" id="lng" name="lng">
                         <div id="map"></div>
                     </div>
                     <div class="d-grid mt-2">
-                        <button type="submit" name="submit" class="btn bg-dark-primary text-white"><i class="fas fa-id-card-alt me-1"></i> Absensi Masuk</button>
+                        <button type="submit" name="masuk" class="btn bg-dark-primary text-white"><i class="fas fa-id-card-alt me-1"></i> Absensi Masuk</button>
                     </div>
                 </form>
             </div>
@@ -131,7 +137,71 @@ if (!isset($_SESSION['login'])) {
         function lokasi_gagal() {
             alert("Browser doesn't support geolocation!");
         }
+
+        $("#form-absen-masuk").submit(function() {
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth * 1;
+            canvas.height = video.videoHeight * 1;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataURL = canvas.toDataURL('image/png');
+
+            $(".img-masuk").val(dataURL);
+        });
     </script>
 </body>
 
 </html>
+
+<?php
+if (isset($_POST['masuk'])) {
+
+    $img = $_POST['foto_masuk'];
+    $folderPath = "../../../storage/masuk/";
+
+    $image_parts = explode(";base64,", $img);
+    $image_type_aux = explode("image/", $image_parts[0]);
+    $image_type = $image_type_aux[1];
+
+    $image_base64 = base64_decode($image_parts[1]);
+    $foto_masuk = uniqid() . '.png';
+
+    $file = $folderPath . $foto_masuk;
+    file_put_contents($file, $image_base64);
+
+    $tambah = $con->query("INSERT INTO absensi VALUES (
+        default, 
+        '$absen',
+        default,
+        default,
+        '$tanggal',
+        '$jamSekarang',
+        '$_POST[lat]',
+        '$_POST[lng]',
+        '$foto_masuk',
+        default,
+        default,
+        default,
+        default,
+        'Hadir'
+    )");
+
+    if ($tambah) {
+        echo "
+            <script>
+                Swal.fire('Absen Masuk Berhasil !', '', 'success').then(function(){
+                    window.close();
+                    window.opener.location.reload(false);
+                });
+            </script>
+        ";
+    } else {
+        echo "
+            <script>
+                Swal.fire('Absen Masuk Gagal !', '', 'error').then(function(){
+                    <meta http-equiv='refresh' content='0; url=absen-masuk'>
+                });
+            </script>
+        ";
+    }
+}
+?>

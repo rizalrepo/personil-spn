@@ -27,6 +27,12 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     color: black !important;
 }
 
+#example1 tbody tr td{
+    color: black;
+    font-size: 13px;
+    padding: 6px;
+}
+
 .form-horizontal input, .form-horizontal select, .form-horizontal option, .form-horizontal textarea {
     color: black !important;
 }

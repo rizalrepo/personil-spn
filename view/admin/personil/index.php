@@ -59,7 +59,7 @@ include_once '../../layout/navhead.php';
                                     <td align="center"><?= $row['nm_pangkat'] ?></td>
                                     <td align="center"><?= $row['nm_jabatan'] ?></td>
                                     <td align="center"><?= tgl($row['tmt']) ?></td>
-                                    <td align="center" width="16%">
+                                    <td align="center" width="11%">
                                         <span data-bs-target="#id<?= $row[0]; ?>" data-bs-toggle="modal" class="btn bg-success btn-xs text-white" title="Detail"><i class="fa fa-info-circle"></i></span>
                                         <a href="edit?id=<?= $row[0] ?>" class="btn btn-info btn-xs text-white" title="Edit"><i class="fa fa-edit"></i></a>
                                         <a href="hapus?id=<?= $row[0] ?>" class="btn btn-danger btn-xs alert-hapus" title="Hapus"><i class="fa fa-trash"></i></a>

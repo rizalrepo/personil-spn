@@ -160,6 +160,20 @@ if (!isset($_SESSION['login'])) {
                                 <i class="fas fa-map-marked-alt nav-icon icon-xs me-2"></i> Absensi Personil
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'izin') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/personil/izin/">
+                                <i class="bi bi-calendar-week-fill nav-icon icon-xs me-2"></i> Izin
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'cuti') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/personil/cuti/">
+                                <i class="bi bi-calendar-range-fill nav-icon icon-xs me-2"></i> Cuti
+                            </a>
+                        </li>
                     <?php } ?>
                 </ul>
             </div>

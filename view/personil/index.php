@@ -6,10 +6,10 @@ include_once '../layout/navhead.php';
 $log = $con->query("SELECT * FROM user WHERE id_user = '$_SESSION[id_user]' ")->fetch_array();
 $user = $log['id_personil'];
 
-// $a1 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE id_personil = '$user' AND verif = 1")->fetch_array();
-// $a2 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE id_personil = '$user' AND verif != 1")->fetch_array();
-// $b1 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user' AND verif = 1 ")->fetch_array();
-// $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user' AND verif != 1 ")->fetch_array();
+$a1 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE id_personil = '$user' AND verif = 1")->fetch_array();
+$a2 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE id_personil = '$user' AND verif != 1")->fetch_array();
+$b1 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user' AND verif = 1 ")->fetch_array();
+$b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user' AND verif != 1 ")->fetch_array();
 ?>
 
 <!-- Container fluid -->
@@ -33,17 +33,7 @@ $user = $log['id_personil'];
                         </div>
                         <div class="ps-3">
                             <h4>Data Izin</h4>
-                            <span class="text-primary small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Total Data</span>
-                            <br>
-                            <span class="text-warning small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Data Belum Diverifikasi</span>
-                            <br>
-                            <span class="text-success small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Data Disetujui</span>
-                            <br>
-                            <span class="text-danger small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Data Ditolak</span>
+                            <span class="badge bg-dark-warning"><?= $a1['total'] ?> Data Belum Diverifikasi</span> <span class="badge bg-dark-success"><?= $a2['total'] ?> Data Diverifikasi</span>
                         </div>
                     </div>
                 </div>
@@ -58,17 +48,7 @@ $user = $log['id_personil'];
                         </div>
                         <div class="ps-3">
                             <h4>Data Cuti</h4>
-                            <span class="text-primary small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Total Data</span>
-                            <br>
-                            <span class="text-warning small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Data Belum Diverifikasi</span>
-                            <br>
-                            <span class="text-success small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Data Disetujui</span>
-                            <br>
-                            <span class="text-danger small pt-1 fw-bold">0</span>
-                            <span class="text-muted small pt-2 ps-1">Data Ditolak</span>
+                            <span class="badge bg-dark-warning"><?= $b1['total'] ?> Data Belum Diverifikasi</span> | <span class="badge bg-dark-success"><?= $b2['total'] ?> Data Diverifikasi</span>
                         </div>
                     </div>
                 </div>

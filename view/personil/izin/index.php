@@ -86,11 +86,11 @@ $absen = $log['id_personil'];
                                     </td>
                                     <td align="center">
                                         <?php if ($row['verif'] == 1) { ?>
-                                            <span class="btn btn-xs btn-warning">Belum Diverifikasi</span>
+                                            <span class="btn btn-xs bg-dark-warning text-white"><i class="fas fa-clock me-1"></i>Menunggu</span>
                                         <?php } else if ($row['verif'] == 2) { ?>
-                                            <span class="btn btn-xs btn-success">Izin Disetujui</span>
+                                            <span class="btn btn-xs btn-success"><i class="fas fa-check-circle me-1"></i>Disetujui</span>
                                         <?php } else { ?>
-                                            <span class="btn btn-xs btn-danger">Izin Ditolak</span>
+                                            <span class="btn btn-xs btn-danger"><i class="fas fa-times-circle me-1"></i>Ditolak</span>
                                             <hr class="my-1">
                                             Karena <?= $row['tolak'] ?>
                                         <?php }  ?>

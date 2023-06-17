@@ -68,11 +68,11 @@ if (!isset($_SESSION['login'])) {
                                                                 $page != 'user' || $page != 'pangkat' || $page != 'jabatan' || $page != 'set'
                                                             ) {
                                                                 echo 'collapsed';
-                                                            } ?>" href="#!" data-bs-toggle="collapse" data-bs-target="#navPages" aria-expanded="false" aria-controls="navPages">
+                                                            } ?>" href="#!" data-bs-toggle="collapse" data-bs-target="#navMaster" aria-expanded="false" aria-controls="navMaster">
                                 <i data-feather="layers" class="nav-icon icon-xs me-2">
                                 </i> Data Master
                             </a>
-                            <div id="navPages" class="collapse <?php if (
+                            <div id="navMaster" class="collapse <?php if (
                                                                     $page == 'user' || $page == 'pangkat' || $page == 'jabatan' || $page == 'set'
                                                                 ) {
                                                                     echo 'show';
@@ -131,18 +131,70 @@ if (!isset($_SESSION['login'])) {
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link has-arrow <?php if ($page == 'personil') {
+                            <a class="nav-link has-arrow <?php if (
+                                                                $page != 'personil' || $page != 'absensi' || $page != 'izin' || $page != 'cuti'
+                                                            ) {
+                                                                echo 'collapsed';
+                                                            } ?>" href="#!" data-bs-toggle="collapse" data-bs-target="#navPersonil" aria-expanded="false" aria-controls="navPersonil">
+                                <i data-feather="users" class="nav-icon icon-xs me-2">
+                                </i> Personil
+                            </a>
+                            <div id="navPersonil" class="collapse <?php if (
+                                                                        $page == 'personil' || $page == 'absensi' || $page == 'izin' || $page == 'cuti'
+                                                                    ) {
+                                                                        echo 'show';
+                                                                    } ?>" data-bs-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'personil'
+                                                            ) {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/admin/personil/">
-                                <i class="nav-icon fas fa-id-badge me-2"></i> Data Personil
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link has-arrow <?php if ($page == 'absensi') {
+                                            <small>
+                                                <i class="fas fa-id-badge me-1"></i>
+                                                Data Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'absensi'
+                                                            ) {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/admin/absensi/">
-                                <i class="nav-icon fas fa-map-marked-alt me-2"></i> Data Absensi
-                            </a>
+                                            <small>
+                                                <i class="fas fa-map-marked-alt me-1"></i>
+                                                Data Absensi
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'izin'
+                                                            ) {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/izin/">
+                                            <small>
+                                                <i class="bi bi-calendar-week-fill me-1"></i>
+                                                Data Izin
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'cuti'
+                                                            ) {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/cuti/">
+                                            <small>
+                                                <i class="bi bi-calendar-range-fill me-1"></i>
+                                                Data Cuti
+                                            </small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     <?php } else if ($_SESSION['level'] == 2) { ?>
                         <li class="nav-item">

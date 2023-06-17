@@ -60,7 +60,7 @@ if (mysqli_connect_errno()) {
                                     <td align="center">
                                         <?php if ($r['sts'] == 'Hadir') { ?>
                                             <?= $r['sts'] ?>
-                                            <a href="<?= base_url() ?>/view/detail/detail-absensi?id=<?= $r[0] ?>" class="btn btn-info btn-xs text-white" title="Lokasi"><i class="fas fa-map-pin me-1"></i> Lokasi</a>
+                                            <a href="<?= base_url() ?>/view/detail/detail-absensi?id=<?= $r[0] ?>" class="btn btn-info btn-xs text-white" title="Lokasi"><i class="fas fa-map-marked-alt me-1"></i>Detail</a>
                                         <?php } else { ?>
                                             <?= $r['sts'] ?>
                                         <?php } ?>

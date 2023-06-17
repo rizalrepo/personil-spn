@@ -63,13 +63,13 @@ function rupiah($angka)
 function hari($tanggal)
 {
   $hari = array(
-    1 =>    'Senin',
-    'Selasa',
-    'Rabu',
-    'Kamis',
-    'Jumat',
-    'Sabtu',
-    'Minggu'
+    1 =>    "Senin",
+    "Selasa",
+    "Rabu",
+    "Kamis",
+    "Jum'at",
+    "Sabtu",
+    "Minggu"
   );
 
   $num = date('N', strtotime($tanggal));

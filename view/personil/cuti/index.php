@@ -86,18 +86,18 @@ $absen = $log['id_personil'];
                                     </td>
                                     <td align="center">
                                         <?php if ($row['verif'] == 1) { ?>
-                                            <span class="btn btn-xs btn-warning">Belum Diverifikasi</span>
+                                            <span class="btn btn-xs bg-dark-warning text-white"><i class="fas fa-clock me-1"></i>Menunggu</span>
                                         <?php } else if ($row['verif'] == 2) { ?>
-                                            <span class="btn btn-xs btn-success">Cuti Disetujui</span>
+                                            <span class="btn btn-xs btn-success"><i class="fas fa-check-circle me-1"></i>Disetujui</span>
                                         <?php } else { ?>
-                                            <span class="btn btn-xs btn-danger">Cuti Ditolak</span>
+                                            <span class="btn btn-xs btn-danger"><i class="fas fa-times-circle me-1"></i>Ditolak</span>
                                             <hr class="my-1">
                                             Karena <?= $row['tolak'] ?>
                                         <?php } ?>
                                     </td>
                                     <td align="center" width="16%">
                                         <?php if ($row['verif'] == 2) { ?>
-                                            <a href="surat?id=<?= $row[0] ?>" target="_blank" class="btn bg-olive btn-xs" title="Surat"><i class="fas fa-envelope-open-text mr-1"></i> Surat Cuti</a>
+                                            <a href="surat?id=<?= $row[0] ?>" target="_blank" class="btn bg-success text-white btn-xs" title="Surat"><i class="fas fa-envelope-open-text me-1"></i>Surat Cuti</a>
                                         <?php } else if ($row['verif'] == 1) { ?>
                                             <a href="edit?id=<?= $row[0] ?>" class="btn btn-info text-white btn-xs" title="Edit"><i class="fas fa-edit"></i> Edit</a>
                                             <a href="hapus?id=<?= $row[0] ?>" class="btn btn-danger btn-xs alert-hapus" title="Hapus"><i class="fas fa-trash"></i> Hapus</a>

@@ -77,7 +77,7 @@ $noverif = $con->query("SELECT COUNT(*) AS total FROM izin WHERE verif = 1 ")->f
                                         </td>
                                         <td align="center" width="13%">
                                             <div class="d-grid">
-                                                <a href="verif?id=<?= $row['id_izin'] ?>&v=2" class="btn bg-success text-white btn-xs alert-verif" title="Setujui"><i class="fas fa-check-circle me-1"></i>Setujui</a>
+                                                <a href="verif?id=<?= $row['id_izin'] ?>&v=2" class="btn bg-success text-white btn-xs alert-setuju" title="Setujui"><i class="fas fa-check-circle me-1"></i>Setujui</a>
                                                 <span data-bs-target="#tolak<?= $row['id_izin']; ?>" data-bs-toggle="modal" class="btn bg-danger text-white btn-xs mt-1" title="Tolak"><i class="fa fa-times-circle me-1"></i> Tolak</>
                                             </div>
                                             <?php include('tolak.php'); ?>

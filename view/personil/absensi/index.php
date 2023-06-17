@@ -21,7 +21,8 @@ $cek_pulang = $con->query("SELECT * FROM absensi WHERE id_personil = '$absen' AN
                         <span class="btn bg-dark-success text-white" onclick="absenMasuk(event)"><i class="fas fa-id-card-alt me-1"></i> Absen Masuk</span>
                     </div>
                 <?php } else { ?>
-                    <p>
+                    <div class="alert alert-success fw-bold" role="alert">
+                        <i class="fas fa-info-circle me-1"></i>
                         <?php if ($cek['sts'] == 'Hadir') { ?>
                             <?php if ($cek['jam_pulang'] != NULL) { ?>
                                 Anda Sudah Melakukan Absensi Pulang !
@@ -35,7 +36,7 @@ $cek_pulang = $con->query("SELECT * FROM absensi WHERE id_personil = '$absen' AN
                         <?php } else { ?>
                             Anda Sedang Sakit !
                         <?php } ?>
-                    </p>
+                    </div>
                 <?php } ?>
                 <?php if ($cek['sts'] == 'Hadir' && $cek['jam_pulang'] == NULL) { ?>
                     <div class="alert alert-success d-grid mb-0" role="alert">

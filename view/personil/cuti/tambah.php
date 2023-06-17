@@ -93,6 +93,7 @@ if (isset($_POST['submit'])) {
         $tambah = $con->query("INSERT INTO cuti VALUES (
             default, 
             default, 
+            default, 
             '$absen',
             '$ket',
             '$tgl_mulai',

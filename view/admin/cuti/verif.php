@@ -33,6 +33,8 @@ if ($verif == 3) {
     $d = date('Y');
     $no_surat = $a . '/' . $b . '/' . $c[date('n')] . '/' . $d;
 
+    $tgl_surat = date('Y-m-d');
+
     $cuti = $con->query("SELECT * FROM cuti WHERE id_cuti = '$id' ")->fetch_array();
 
     $cek_tgl = mysqli_num_rows(mysqli_query($con, "SELECT * FROM absensi WHERE tanggal BETWEEN '$cuti[tgl_mulai]' AND '$cuti[tgl_selesai]' AND id_personil = '$cuti[id_personil]'"));
@@ -42,6 +44,7 @@ if ($verif == 3) {
     } else {
         $update = $con->query("UPDATE cuti SET
             no_surat = '$no_surat',
+            tgl_surat = '$tgl_surat',
             verif = '$verif'
             WHERE id_cuti = '$id'
         ");

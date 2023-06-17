@@ -137,6 +137,13 @@ if (!isset($_SESSION['login'])) {
                                 <i class="nav-icon fas fa-id-badge me-2"></i> Data Personil
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'absensi') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/absensi/">
+                                <i class="nav-icon fas fa-map-marked-alt me-2"></i> Data Absensi
+                            </a>
+                        </li>
                     <?php } else if ($_SESSION['level'] == 2) { ?>
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'dashboard') {

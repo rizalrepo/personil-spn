@@ -96,7 +96,7 @@ $cek_pulang = $con->query("SELECT * FROM absensi WHERE id_personil = '$absen' AN
                                     <td align="center">
                                         <?php if ($row['sts'] == 'Hadir') { ?>
                                             <?= $row['sts'] ?>
-                                            <a href="detail?id=<?= $row[0] ?>" class="btn bg-info text-white btn-xs" title="Lokasi"><i class="fas fa-map-marked-alt"></i> Detail</a>
+                                            <a href="../../detail/detail-absensi?id=<?= $row[0] ?>" class="btn bg-info text-white btn-xs" title="Lokasi"><i class="fas fa-map-marked-alt"></i> Detail</a>
                                         <?php } else { ?>
                                             <?= $row['sts'] ?>
                                         <?php } ?>

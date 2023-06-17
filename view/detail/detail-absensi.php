@@ -1,7 +1,7 @@
 <?php
-require '../../../app/config.php';
+require '../../app/config.php';
 $page = 'absensi';
-include_once '../../layout/navhead.php';
+include_once '../layout/navhead.php';
 
 $id = $_GET['id'];
 
@@ -30,7 +30,14 @@ $dt = $query->fetch_array();
                     <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Detail Absensi</h4>
                 </div>
                 <div>
-                    <a href="index" class="btn btn-sm btn-dark"><i class="fa fa-arrow-left"></i> Kembali</a>
+                    <?php
+                    if ($_SESSION['level'] == 3) {
+                        $url = '../personil/absensi/index';
+                    } else {
+                        $url = '../admin/absensi/index';
+                    }
+                    ?>
+                    <a href="<?= $url ?>" class="btn btn-sm btn-dark"><i class="fa fa-arrow-left"></i> Kembali</a>
                 </div>
             </div>
         </div>
@@ -95,7 +102,7 @@ $dt = $query->fetch_array();
 </div>
 
 <?php
-include_once '../../layout/footer.php';
+include_once '../layout/footer.php';
 ?>
 
 <script>

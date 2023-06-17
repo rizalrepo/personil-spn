@@ -18,16 +18,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-bottom: -0.48rem;
 }
 
-#example1 thead th {
+#example1 thead th, .example2 thead th {
     color: white;
     text-align: center;
 }
 
-#example1 tbody td {
+#example1 tbody td, .example2 tbody td {
     color: black !important;
 }
 
-#example1 tbody tr td{
+#example1 tbody tr td, .example2 thead tr td{
     color: black;
     font-size: 13px;
     padding: 6px;

@@ -48,7 +48,7 @@ $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user
                         </div>
                         <div class="ps-3">
                             <h4>Data Cuti</h4>
-                            <span class="badge bg-dark-warning"><?= $b1['total'] ?> Data Belum Diverifikasi</span> | <span class="badge bg-dark-success"><?= $b2['total'] ?> Data Diverifikasi</span>
+                            <span class="badge bg-dark-warning"><?= $b1['total'] ?> Data Belum Diverifikasi</span> <span class="badge bg-dark-success"><?= $b2['total'] ?> Data Diverifikasi</span>
                         </div>
                     </div>
                 </div>

@@ -48,7 +48,7 @@ $jk2 = [
                     <div class="form-group row mb-3">
                         <label class="col-sm-2 col-form-label">Pangkat</label>
                         <div class="col-sm-10">
-                            <select name="id_pangkat" class="form-select select2" style="width: 100%;">
+                            <select name="id_pangkat" class="form-select select2" style="width: 100%;" required>
                                 <?php $data = $con->query("SELECT * FROM pangkat ORDER BY id_pangkat ASC"); ?>
                                 <?php foreach ($data as $d) :
                                     if ($d['id_pangkat'] == $row['id_pangkat']) { ?>
@@ -64,7 +64,7 @@ $jk2 = [
                     <div class="form-group row mb-3">
                         <label class="col-sm-2 col-form-label">Jabatan</label>
                         <div class="col-sm-10">
-                            <select name="id_jabatan" class="form-select select2" style="width: 100%;">
+                            <select name="id_jabatan" class="form-select select2" style="width: 100%;" required>
                                 <?php $data = $con->query("SELECT * FROM jabatan ORDER BY id_jabatan ASC"); ?>
                                 <?php foreach ($data as $d) :
                                     if ($d['id_jabatan'] == $row['id_jabatan']) { ?>

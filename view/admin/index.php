@@ -9,6 +9,7 @@ $a1 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE verif = 1")->fetch_a
 $a2 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE verif != 1")->fetch_array();
 $b1 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif = 1 ")->fetch_array();
 $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif != 1 ")->fetch_array();
+$c = $con->query("SELECT COUNT(*) AS total FROM tugas")->fetch_array();
 ?>
 
 <!-- Container fluid -->
@@ -23,7 +24,7 @@ $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif != 1 ")->fetch
                 </div>
             </div>
         </div>
-        <div class="col-xl-12 col-lg-6 col-md-12 col-12 mt-3">
+        <div class="col-12 mt-3">
             <div class="card info-card sales-card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -64,6 +65,22 @@ $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif != 1 ")->fetch
                         <div class="ps-3">
                             <h4>Data Cuti</h4>
                             <span class="badge bg-dark-warning"><?= $b1['total'] ?> Data Belum Diverifikasi</span> <span class="badge bg-dark-success"><?= $b2['total'] ?> Data Diverifikasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
+            <div class="card info-card sales-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape icon-md bg-light-danger text-danger rounded-2">
+                            <i class="bi bi-journal-bookmark-fill fs-4"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h4>Data Perintah Tugas</h4>
+                            <span class="text-success small pt-1 fw-bold"><?= $c['total'] ?></span>
+                            <span class="text-muted small pt-2 ps-1">Total Data</span>
                         </div>
                     </div>
                 </div>

@@ -39,7 +39,6 @@ $absen = $log['id_personil'];
                         <thead class="bg-dark-danger">
                             <tr>
                                 <th>No</th>
-                                <th>Personil</th>
                                 <th>Jenis Izin</th>
                                 <th>Keterangan</th>
                                 <th>Tanggal</th>
@@ -51,7 +50,7 @@ $absen = $log['id_personil'];
                         <tbody>
                             <?php
                             $no = 1;
-                            $data = $con->query("SELECT * FROM izin a JOIN personil b ON a.id_personil = b.id_personil WHERE a.id_personil = '$absen' ORDER BY a.id_izin DESC");
+                            $data = $con->query("SELECT * FROM izin WHERE id_personil = '$absen' ORDER BY id_izin DESC");
                             while ($row = $data->fetch_array()) {
                                 $tgl1 = $row['tgl_mulai'];
                                 $tgl2 = date('Y-m-d', strtotime('-1 days', strtotime($tgl1)));
@@ -61,11 +60,6 @@ $absen = $log['id_personil'];
                             ?>
                                 <tr>
                                     <td align="center" width="5%"><?= $no++ ?></td>
-                                    <td>
-                                        <b>Nama</b> : <?= $row['nm_personil'] ?>
-                                        <hr class="my-1">
-                                        <b>NRP / NIP</b> : <?= $row['nrp_nip'] ?>
-                                    </td>
                                     <td align="center"><?= $row['sts_izin'] ?></td>
                                     <td><?= $row['ket_izin'] ?></td>
                                     <td align="center">

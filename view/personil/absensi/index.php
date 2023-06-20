@@ -86,7 +86,7 @@ $cek_pulang = $con->query("SELECT * FROM absensi WHERE id_personil = '$absen' AN
                                             <?= $row['jam_masuk'] ?>
                                             -
                                             <?php if (!$row['jam_pulang']) { ?>
-                                                belum pulang
+                                                Belum Pulang
                                             <?php } else { ?>
                                                 <?= $row['jam_pulang'] ?>
                                             <?php } ?>

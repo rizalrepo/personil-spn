@@ -37,11 +37,11 @@ if (mysqli_connect_errno()) {
                         </thead>
                         <tbody>
                             <?php
-                            $no = 1;
+                            $no1 = 1;
                             while ($r = $q->fetch_array()) {
                             ?>
                                 <tr>
-                                    <td align="center" width="5%"><?= $no++ ?></td>
+                                    <td align="center" width="5%"><?= $no1++ ?></td>
                                     <td align="center"><?= hari($r['tanggal']) ?></td>
                                     <td align="center"><?= tgl($r['tanggal']) ?></td>
                                     <td align="center">
@@ -49,7 +49,7 @@ if (mysqli_connect_errno()) {
                                             <?= $r['jam_masuk'] ?>
                                             -
                                             <?php if (!$r['jam_pulang']) { ?>
-                                                belum pulang
+                                                Belum Pulang
                                             <?php } else { ?>
                                                 <?= $r['jam_pulang'] ?>
                                             <?php } ?>

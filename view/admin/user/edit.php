@@ -10,7 +10,7 @@ $row = $query->fetch_array();
 $level = [
     '' => '-- Pilih --',
     '1' => 'Admin',
-    '2' => 'KA SPN',
+    '2' => 'Pimpinan',
 ];
 ?>
 

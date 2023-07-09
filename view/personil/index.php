@@ -10,7 +10,7 @@ $a1 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE id_personil = '$user
 $a2 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE id_personil = '$user' AND verif != 1")->fetch_array();
 $b1 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user' AND verif = 1 ")->fetch_array();
 $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE id_personil = '$user' AND verif != 1 ")->fetch_array();
-$c = $con->query("SELECT COUNT(*) AS total FROM tugas a LEFT JOIN tugas_detail b ON a.id_tugas = b.id_tugas WHERE b.id_personil = '$user'")->fetch_array();
+$c = $con->query("SELECT COUNT(*) AS total FROM tugas a LEFT JOIN tugas_detail b ON a.id_tugas = b.id_tugas WHERE b.id_personil = '$user' AND a.verif = 3")->fetch_array();
 ?>
 
 <!-- Container fluid -->

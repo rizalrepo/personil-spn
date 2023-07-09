@@ -6,7 +6,7 @@ include_once '../../layout/navhead.php';
 $level = [
     '' => '-- Pilih --',
     '1' => 'Admin',
-    '2' => 'KA SPN',
+    '2' => 'Pimpinan',
 ];
 ?>
 

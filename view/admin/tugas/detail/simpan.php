@@ -10,6 +10,8 @@ $cek = mysqli_num_rows(mysqli_query($con, "SELECT * FROM tugas_detail WHERE id_p
 
 if ($cek > 0) {
     $data['hasil'] = 'duplikat';
+} else if ($personil == '') {
+    $data['hasil'] = 'kosong';
 } else {
     $tambah = $con->query("INSERT INTO tugas_detail VALUES (
             default,

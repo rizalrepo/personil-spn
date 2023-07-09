@@ -31,10 +31,12 @@ $dt = $query->fetch_array();
                 </div>
                 <div>
                     <?php
-                    if ($_SESSION['level'] == 3) {
-                        $url = '../personil/absensi/index';
-                    } else {
+                    if ($_SESSION['level'] == 1) {
                         $url = '../admin/absensi/index';
+                    } else if ($_SESSION['level'] == 2) {
+                        $url = '../pimpinan/absensi/index';
+                    } else if ($_SESSION['level'] == 3) {
+                        $url = '../personil/absensi/index';
                     }
                     ?>
                     <a href="<?= $url ?>" class="btn btn-sm btn-dark"><i class="fa fa-arrow-left"></i> Kembali</a>

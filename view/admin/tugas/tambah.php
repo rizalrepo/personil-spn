@@ -4,20 +4,6 @@ $page = 'tugas';
 include_once '../../layout/navhead.php';
 
 $idT = uniqid();
-
-$cek = $con->query("SELECT no_surat FROM tugas ORDER BY id_tugas DESC LIMIT 1")->fetch_array();
-$ex = explode('/', $cek['no_surat']);
-
-if (date('d') == '01') {
-    $a = '01';
-} else {
-    $a = sprintf("%02d", floatval($ex[0]) + 1);
-}
-
-$b = 'ST';
-$c = array('', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII');
-$d = date('Y');
-$no_surat = $a . '/' . $b . '/' . $c[date('n')] . '/' . $d;
 ?>
 
 <div class="container-fluid">
@@ -38,20 +24,6 @@ $no_surat = $a . '/' . $b . '/' . $c[date('n')] . '/' . $d;
             <div class="card card-body border border-dark-danger">
                 <form class="form-horizontal needs-validation" novalidate method="POST" action="" enctype="multipart/form-data">
                     <input type="hidden" name="id_tugas" value="<?= $idT ?>">
-                    <div class="form-group row mb-3">
-                        <label class="col-sm-2 col-form-label">Nomor Surat</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control bg-light" name="no_surat" value="<?= $no_surat ?>" required readonly>
-                            <div class="invalid-feedback">Kolom tidak boleh kosong !</div>
-                        </div>
-                    </div>
-                    <div class="form-group row mb-3">
-                        <label class="col-sm-2 col-form-label">Tanggal Surat</label>
-                        <div class="col-sm-10">
-                            <input type="date" class="form-control" name="tgl_surat" value="<?= date('Y-m-d') ?>" required>
-                            <div class="invalid-feedback">Kolom tidak boleh kosong !</div>
-                        </div>
-                    </div>
                     <div class="form-group row mb-3">
                         <label class="col-sm-2 col-form-label">Agenda</label>
                         <div class="col-sm-10">
@@ -107,13 +79,13 @@ $no_surat = $a . '/' . $b . '/' . $c[date('n')] . '/' . $d;
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal needs-validation" novalidate id="form-tambah" method="POST" enctype="multipart/form-data" action="detail/simpan.php">
+                <form class="form-horizontal" id="form-tambah" method="POST" enctype="multipart/form-data" action="detail/simpan.php">
                     <div class="card-body">
                         <input type="hidden" name="id_tugas" value="<?= $idT ?>">
                         <div class="form-group row mb-3">
                             <label class="col-sm-2 col-form-label">Nama Personil</label>
                             <div class="col-sm-10">
-                                <select name="id_personil" id="id_personil" class="form-select" style="width: 100%;" required>
+                                <select name="id_personil" id="id_personil" class="form-select" style="width: 100%;">
                                     <option value="">-- Pilih --</option>
                                     <?php $data = $con->query("SELECT * FROM personil ORDER BY nm_personil ASC"); ?>
                                     <?php foreach ($data as $row) : ?>
@@ -174,6 +146,12 @@ include_once '../../layout/footer.php';
                         text: 'Data Personil sudah Ada !',
                         icon: 'error'
                     });
+                } else if (hasil.hasil == 'kosong') {
+                    Swal.fire({
+                        title: 'Gagal !',
+                        text: 'Personil harus di Pilih !',
+                        icon: 'error'
+                    });
                 }
             }
         });
@@ -200,8 +178,6 @@ include_once '../../layout/footer.php';
 <?php
 if (isset($_POST['submit'])) {
     $id_tugas = $_POST['id_tugas'];
-    $no_surat = $_POST['no_surat'];
-    $tgl_surat = $_POST['tgl_surat'];
     $agenda = $_POST['agenda'];
     $tgl_mulai = $_POST['tgl_mulai'];
     $tgl_selesai = $_POST['tgl_selesai'];
@@ -209,12 +185,14 @@ if (isset($_POST['submit'])) {
 
     $tambah = $con->query("INSERT INTO tugas VALUES (
         '$id_tugas', 
-        '$no_surat', 
-        '$tgl_surat', 
+        default, 
+        default, 
         '$agenda',
         '$tgl_mulai',
         '$tgl_selesai',
-        '$tempat'
+        '$tempat',
+        1,
+        default
     )");
 
     if ($tambah) {

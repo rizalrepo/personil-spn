@@ -212,8 +212,36 @@ if (!isset($_SESSION['login'])) {
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'dashboard') {
                                                                 echo 'active';
-                                                            } ?>" href="<?= base_url() ?>/view/admin/">
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/">
                                 <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'absensi') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/absensi/">
+                                <i class="fas fa-map-marked-alt nav-icon icon-xs me-2"></i> Absensi Personil
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'izin') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/izin/">
+                                <i class="bi bi-calendar-week-fill nav-icon icon-xs me-2"></i> Izin
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'cuti') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/cuti/">
+                                <i class="bi bi-calendar-range-fill nav-icon icon-xs me-2"></i> Cuti
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'tugas') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/tugas/">
+                                <i class="bi bi-journal-bookmark-fill nav-icon icon-xs me-2"></i> Perintah Tugas
                             </a>
                         </li>
                     <?php } else if ($_SESSION['level'] == 3) { ?>

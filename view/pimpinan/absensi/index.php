@@ -1,6 +1,6 @@
 <?php
 require '../../../app/config.php';
-$page = 'user';
+$page = 'absensi';
 include_once '../../layout/navhead.php';
 ?>
 
@@ -10,10 +10,7 @@ include_once '../../layout/navhead.php';
             <!-- Page header -->
             <div class="d-flex justify-content-between align-items-center">
                 <div class="mb-2 mb-lg-0">
-                    <h4 class="mb-0"><i class="fas fa-user me-2"></i>Data Pengguna</h4>
-                </div>
-                <div>
-                    <a href="tambah" class="btn btn-sm btn-dark"><i class="fas fa-plus-circle"></i> Tambah Data</a>
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Data Absensi</h4>
                 </div>
             </div>
         </div>
@@ -37,9 +34,9 @@ include_once '../../layout/navhead.php';
                         <thead class="bg-dark-danger">
                             <tr>
                                 <th>No</th>
-                                <th>Nama Pengguna</th>
-                                <th>Username</th>
-                                <th>Level</th>
+                                <th>Data Personil</th>
+                                <th>Pangkat</th>
+                                <th>Jabatan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -47,29 +44,21 @@ include_once '../../layout/navhead.php';
                         <tbody>
                             <?php
                             $no = 1;
-                            $data = $con->query("SELECT * FROM user ORDER BY id_user DESC");
+                            $data = $con->query("SELECT * FROM personil a JOIN pangkat b ON a.id_pangkat = b.id_pangkat JOIN jabatan c ON a.id_jabatan = c.id_jabatan ORDER BY tmt DESC");
                             while ($row = $data->fetch_array()) {
                             ?>
                                 <tr>
                                     <td align="center" width="5%"><?= $no++ ?></td>
-                                    <td><?= $row['nm_user'] ?></td>
-                                    <td><?= $row['username'] ?></td>
-                                    <td align="center">
-                                        <?php
-                                        if ($row['level'] == 1) {
-                                            echo 'Admin';
-                                        } else if ($row['level'] == 2) {
-                                            echo 'Pimpinan';
-                                        } else if ($row['level'] == 3) {
-                                            echo 'Personil';
-                                        }
-                                        ?>
+                                    <td>
+                                        <b>Nama</b> : <?= $row['nm_personil'] ?>
+                                        <hr class="my-1">
+                                        <b>NRP / NIP</b> : <?= $row['nrp_nip'] ?><br>
                                     </td>
-                                    <td align="center" width="18%">
-                                        <a href="edit?id=<?= $row[0] ?>" class="btn text-white btn-info btn-xs" title="Edit"><i class="fa fa-edit"></i> Edit</a>
-                                        <?php if ($row['level'] == 1 || $row['level'] == 2) { ?>
-                                            <a href="hapus?id=<?= $row[0] ?>" class="btn btn-danger btn-xs alert-hapus" title="Hapus"><i class="fa fa-trash"></i> Hapus</a>
-                                        <?php } ?>
+                                    <td align="center"><?= $row['nm_pangkat'] ?></td>
+                                    <td align="center"><?= $row['nm_jabatan'] ?></td>
+                                    <td align="center" width="13%">
+                                        <span data-bs-target="#id<?= $row[0]; ?>" data-bs-toggle="modal" class="btn bg-success btn-xs text-white" title="Detail"><i class="fas fa-street-view me-1"></i> Data Absensi</span>
+                                        <?php include('../../detail/absensi.php'); ?>
                                     </td>
                                 </tr>
                             <?php } ?>

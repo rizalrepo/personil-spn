@@ -114,8 +114,10 @@ if (isset($_POST['log'])) {
         $_SESSION['level'] = $level;
         $_SESSION['nm_user'] = $usr;
 
-        if ($level == 1 || $level == 2) {
+        if ($level == 1) {
             $url = 'view/admin/';
+        } else if ($level == 2) {
+            $url = 'view/pimpinan/';
         } else if ($level == 3) {
             $url = 'view/personil/';
         }

@@ -93,13 +93,13 @@ $row = $query->fetch_array();
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal needs-validation" novalidate id="form-tambah" method="POST" enctype="multipart/form-data" action="detail/simpan.php">
+                <form class="form-horizontal" id="form-tambah" method="POST" enctype="multipart/form-data" action="detail/simpan.php">
                     <div class="card-body">
                         <input type="hidden" name="id_tugas" value="<?= $id ?>">
                         <div class="form-group row mb-3">
                             <label class="col-sm-2 col-form-label">Nama Personil</label>
                             <div class="col-sm-10">
-                                <select name="id_personil" id="id_personil" class="form-select" style="width: 100%;" required>
+                                <select name="id_personil" id="id_personil" class="form-select" style="width: 100%;">
                                     <option value="">-- Pilih --</option>
                                     <?php $data = $con->query("SELECT * FROM personil ORDER BY nm_personil ASC"); ?>
                                     <?php foreach ($data as $row) : ?>
@@ -157,6 +157,12 @@ include_once '../../layout/footer.php';
                     Swal.fire({
                         title: 'Gagal !',
                         text: 'Data Personil sudah Ada !',
+                        icon: 'error'
+                    });
+                } else if (hasil.hasil == 'kosong') {
+                    Swal.fire({
+                        title: 'Gagal !',
+                        text: 'Personil harus di Pilih !',
                         icon: 'error'
                     });
                 }

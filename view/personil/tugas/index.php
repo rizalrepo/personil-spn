@@ -38,9 +38,9 @@ $absen = $log['id_personil'];
                             <tr>
                                 <th>No</th>
                                 <th>Surat</th>
+                                <th>Personil</th>
                                 <th>Agenda</th>
                                 <th>Tanggal</th>
-                                <th>Tempat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -48,7 +48,7 @@ $absen = $log['id_personil'];
                         <tbody>
                             <?php
                             $no = 1;
-                            $data = $con->query("SELECT * FROM tugas a LEFT JOIN tugas_detail b ON a.id_tugas = b.id_tugas WHERE b.id_personil = '$absen' ORDER BY a.id_tugas DESC");
+                            $data = $con->query("SELECT * FROM tugas a LEFT JOIN tugas_detail b ON a.id_tugas = b.id_tugas WHERE b.id_personil = '$absen' AND a.verif = 2 ORDER BY a.id_tugas DESC");
                             while ($row = $data->fetch_array()) {
                                 $tgl1 = $row['tgl_mulai'];
                                 $tgl2 = date('Y-m-d', strtotime('-1 days', strtotime($tgl1)));
@@ -58,12 +58,25 @@ $absen = $log['id_personil'];
                             ?>
                                 <tr>
                                     <td align="center" width="5%"><?= $no++ ?></td>
-                                    <td width="22%">
+                                    <td>
                                         <b>Nomor</b> : <?= $row['no_surat'] ?>
                                         <hr class="mt-1 mb-1">
                                         <b>Tanggal</b> : <?= tgl($row['tgl_surat']) ?>
                                     </td>
-                                    <td align="center"><?= $row['agenda'] ?></td>
+                                    <td>
+                                        <?php
+                                        $qry = $con->query("SELECT * FROM tugas_detail a LEFT JOIN personil b ON a.id_personil = b.id_personil WHERE a.id_tugas = '$row[0]'");
+                                        $no1 = 1;
+                                        foreach ($qry as $dt) :
+                                            echo $no1++ . '. ' . $dt['nm_personil'] . '<br>';
+                                        endforeach
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?= $row['agenda'] ?>
+                                        <br>
+                                        Tempat : <?= $row['tempat'] ?>
+                                    </td>
                                     <td align="center">
                                         <?php if ($row['tgl_mulai'] == $row['tgl_selesai']) {
                                             echo tgl($row['tgl_mulai']);
@@ -74,7 +87,6 @@ $absen = $log['id_personil'];
                                             echo '<hr class="my-1"> Lama Tugas : ' . $diff->d . ' Hari';
                                         } ?>
                                     </td>
-                                    <td align="center"><?= $row['tempat'] ?></td>
                                     <td align="center" width="7%">
                                         <a href="surat?id=<?= $row[0] ?>" class="btn bg-success text-white btn-xs" title="Surat Perintah Tugas" target="_blank"><i class="fas fa-file-pdf"></i> Surat</a>
                                     </td>

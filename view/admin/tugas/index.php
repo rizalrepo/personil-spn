@@ -38,10 +38,10 @@ include_once '../../layout/navhead.php';
                             <tr>
                                 <th>No</th>
                                 <th>Surat</th>
+                                <th>Personil</th>
                                 <th>Agenda</th>
                                 <th>Tanggal</th>
-                                <th>Tempat</th>
-                                <th>Aksi</th>
+                                <th>Verifikasi</th>
                             </tr>
                         </thead>
 
@@ -58,12 +58,29 @@ include_once '../../layout/navhead.php';
                             ?>
                                 <tr>
                                     <td align="center" width="5%"><?= $no++ ?></td>
-                                    <td width="22%">
-                                        <b>Nomor</b> : <?= $row['no_surat'] ?>
-                                        <hr class="mt-1 mb-1">
-                                        <b>Tanggal</b> : <?= tgl($row['tgl_surat']) ?>
+                                    <td align="center">
+                                        <?php if ($row['verif'] == 2) { ?>
+                                            <?= $row['no_surat'] ?>
+                                            <hr class="my-1">
+                                            <a href="surat?id=<?= $row[0] ?>" target="_BLANK" class="btn bg-success text-white btn-xs" title="Surat"><i class="fas fa-envelope-open-text me-1"></i>Surat Tugas</a>
+                                        <?php } else { ?>
+                                            -
+                                        <?php } ?>
                                     </td>
-                                    <td align="center"><?= $row['agenda'] ?></td>
+                                    <td>
+                                        <?php
+                                        $qry = $con->query("SELECT * FROM tugas_detail a LEFT JOIN personil b ON a.id_personil = b.id_personil WHERE a.id_tugas = '$row[0]'");
+                                        $no1 = 1;
+                                        foreach ($qry as $dt) :
+                                            echo $no1++ . '. ' . $dt['nm_personil'] . '<br>';
+                                        endforeach
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?= $row['agenda'] ?>
+                                        <br>
+                                        Tempat : <?= $row['tempat'] ?>
+                                    </td>
                                     <td align="center">
                                         <?php if ($row['tgl_mulai'] == $row['tgl_selesai']) {
                                             echo tgl($row['tgl_mulai']);
@@ -74,11 +91,18 @@ include_once '../../layout/navhead.php';
                                             echo '<hr class="my-1"> Lama Tugas : ' . $diff->d . ' Hari';
                                         } ?>
                                     </td>
-                                    <td align="center"><?= $row['tempat'] ?></td>
                                     <td align="center" width="11%">
-                                        <a href="surat?id=<?= $row[0] ?>" class="btn bg-success text-white btn-xs" title="Surat Perintah Tugas" target="_blank"><i class="fas fa-file-pdf"></i></a>
-                                        <a href="edit?id=<?= $row[0] ?>" class="btn btn-info text-white btn-xs" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a href="hapus?id=<?= $row[0] ?>" class="btn btn-danger btn-xs alert-hapus" title="Hapus"><i class="fa fa-trash"></i></a>
+                                        <?php if ($row['verif'] == 1) { ?>
+                                            <span class="btn btn-xs bg-dark-warning text-white"><i class="fas fa-clock me-1"></i>Menunggu</span><br>
+                                            <a href="edit?id=<?= $row[0] ?>" class="btn btn-info text-white btn-xs mt-1" title="Edit"><i class="fas fa-edit"></i></a>
+                                            <a href="hapus?id=<?= $row[0] ?>" class="btn btn-danger btn-xs alert-hapus mt-1" title="Hapus"><i class="fas fa-trash"></i></a>
+                                        <?php } else if ($row['verif'] == 2) { ?>
+                                            <span class="btn btn-xs btn-success"><i class="fas fa-check-circle me-1"></i>Disetujui</span>
+                                        <?php } else { ?>
+                                            <span class="btn btn-xs btn-danger"><i class="fas fa-times-circle me-1"></i>Ditolak</span>
+                                            <hr class="my-1">
+                                            Karena <?= $row['tolak'] ?>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>

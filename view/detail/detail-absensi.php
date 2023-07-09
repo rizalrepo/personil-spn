@@ -70,8 +70,7 @@ $dt = $query->fetch_array();
 
                         <div id="collapseMasuk" class="accordion-collapse collapse show" aria-labelledby="headingMasuk" data-bs-parent="#accordionExample1">
                             <div class="accordion-body">
-                                <div id="lokasi_masuk" class="mb-2"></div>
-                                <img src="<?= base_url() ?>/storage/masuk/<?= $dt['foto_masuk'] ?>" width="100%" alt="Foto Masuk">
+                                <div id="lokasi_masuk"></div>
                             </div>
                         </div>
                     </div>
@@ -89,8 +88,7 @@ $dt = $query->fetch_array();
                             </h2>
                             <div id="collapsePulang" class="accordion-collapse collapse show" aria-labelledby="headingPulang" data-bs-parent="#accordionExample2">
                                 <div class="accordion-body">
-                                    <div id="lokasi_pulang" class="mb-2"></div>
-                                    <img src="<?= base_url() ?>/storage/pulang/<?= $dt['foto_pulang'] ?>" width="100%" alt="Foto Pulang">
+                                    <div id="lokasi_pulang"></div>
                                 </div>
                             </div>
                         </div>

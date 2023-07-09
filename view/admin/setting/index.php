@@ -15,9 +15,6 @@ $row = $query->fetch_array();
                 <div class="mb-2 mb-lg-0">
                     <h4 class="mb-0"><i class="fas fa-cogs me-2"></i>Setting Aplikasi</h4>
                 </div>
-                <div>
-                    <a href="index" class="btn btn-sm btn-dark"><i class="fa fa-arrow-left"></i> Kembali</a>
-                </div>
             </div>
         </div>
 

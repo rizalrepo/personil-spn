@@ -49,9 +49,7 @@ if ($verif == 3) {
                 '-',
                 default,
                 default,
-                default,
                 '-',
-                default,
                 default,
                 default,
                 'Izin'

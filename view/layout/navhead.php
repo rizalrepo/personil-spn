@@ -132,7 +132,7 @@ if (!isset($_SESSION['login'])) {
 
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if (
-                                                                $page != 'personil' || $page != 'absensi' || $page != 'izin' || $page != 'cuti' || $page != 'tugas'
+                                                                $page != 'personil' || $page != 'absensi' || $page != 'izin' || $page != 'cuti' || $page != 'tugas' || $page != 'mutasi'
                                                             ) {
                                                                 echo 'collapsed';
                                                             } ?>" href="#!" data-bs-toggle="collapse" data-bs-target="#navPersonil" aria-expanded="false" aria-controls="navPersonil">
@@ -140,7 +140,7 @@ if (!isset($_SESSION['login'])) {
                                 </i> Personil
                             </a>
                             <div id="navPersonil" class="collapse <?php if (
-                                                                        $page == 'personil' || $page == 'absensi' || $page == 'izin' || $page == 'cuti' || $page == 'tugas'
+                                                                        $page == 'personil' || $page == 'absensi' || $page == 'izin' || $page == 'cuti' || $page == 'tugas' || $page == 'mutasi'
                                                                     ) {
                                                                         echo 'show';
                                                                     } ?>" data-bs-parent="#sideNavbar">
@@ -205,6 +205,18 @@ if (!isset($_SESSION['login'])) {
                                             </small>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'mutasi'
+                                                            ) {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/mutasi/">
+                                            <small>
+                                                <i class="fas fa-arrow-right-arrow-left me-1"></i>
+                                                Data Mutasi Jabatan
+                                            </small>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -242,6 +254,13 @@ if (!isset($_SESSION['login'])) {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/pimpinan/tugas/">
                                 <i class="bi bi-journal-bookmark-fill nav-icon icon-xs me-2"></i> Perintah Tugas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'mutasi') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/mutasi/">
+                                <i class="fas fa-arrow-right-arrow-left nav-icon icon-xs me-2"></i> Mutasi Jabatan
                             </a>
                         </li>
                     <?php } else if ($_SESSION['level'] == 3) { ?>

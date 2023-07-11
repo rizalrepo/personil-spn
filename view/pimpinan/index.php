@@ -11,6 +11,8 @@ $b1 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif = 1 ")->fetch_
 $b2 = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif != 1 ")->fetch_array();
 $c1 = $con->query("SELECT COUNT(*) AS total FROM tugas WHERE verif = 1 ")->fetch_array();
 $c2 = $con->query("SELECT COUNT(*) AS total FROM tugas WHERE verif != 1 ")->fetch_array();
+$d1 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif = 1 ")->fetch_array();
+$d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fetch_array();
 ?>
 
 <!-- Container fluid -->
@@ -81,6 +83,21 @@ $c2 = $con->query("SELECT COUNT(*) AS total FROM tugas WHERE verif != 1 ")->fetc
                         <div class="ps-3">
                             <h4>Data Perintah Tugas</h4>
                             <span class="badge bg-dark-warning"><?= $c1['total'] ?> Data Belum Diverifikasi</span> <span class="badge bg-dark-success"><?= $c2['total'] ?> Data Diverifikasi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
+            <div class="card info-card sales-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape icon-md bg-light-danger text-danger rounded-2">
+                            <i class="fas fa-arrow-right-arrow-left fs-4"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h4>Data Mutasi Jabatan</h4>
+                            <span class="badge bg-dark-warning"><?= $d1['total'] ?> Data Belum Diverifikasi</span> <span class="badge bg-dark-success"><?= $d2['total'] ?> Data Diverifikasi</span>
                         </div>
                     </div>
                 </div>

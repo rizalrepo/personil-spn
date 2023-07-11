@@ -65,7 +65,7 @@ if (!isset($_SESSION['login'])) {
                         <!-- Nav item -->
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if (
-                                                                $page != 'user' || $page != 'pangkat' || $page != 'jabatan' || $page != 'set'
+                                                                $page != 'user' || $page != 'pangkat' || $page != 'jabatan' || $page != 'jenis_kegiatan' || $page != 'set'
                                                             ) {
                                                                 echo 'collapsed';
                                                             } ?>" href="#!" data-bs-toggle="collapse" data-bs-target="#navMaster" aria-expanded="false" aria-controls="navMaster">
@@ -73,7 +73,7 @@ if (!isset($_SESSION['login'])) {
                                 </i> Data Master
                             </a>
                             <div id="navMaster" class="collapse <?php if (
-                                                                    $page == 'user' || $page == 'pangkat' || $page == 'jabatan' || $page == 'set'
+                                                                    $page == 'user' || $page == 'pangkat' || $page == 'jabatan' || $page == 'set' || $page == 'jenis_kegiatan'
                                                                 ) {
                                                                     echo 'show';
                                                                 } ?>" data-bs-parent="#sideNavbar">
@@ -111,6 +111,18 @@ if (!isset($_SESSION['login'])) {
                                             <small>
                                                 <i class="fas fa-sitemap me-1"></i>
                                                 Data Jabatan
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link <?php if (
+                                                                $page == 'jenis_kegiatan'
+                                                            ) {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/jenis-kegiatan/">
+                                            <small>
+                                                <i class="fas fa-pie-chart me-1"></i>
+                                                Data Jenis Kegiatan
                                             </small>
                                         </a>
                                     </li>
@@ -220,12 +232,27 @@ if (!isset($_SESSION['login'])) {
                                 </ul>
                             </div>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'kegiatan') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/admin/kegiatan/">
+                                <i class="nav-icon far fa-calendar-check me-2"></i> Data Kegiatan
+                            </a>
+                        </li>
                     <?php } else if ($_SESSION['level'] == 2) { ?>
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'dashboard') {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/pimpinan/">
                                 <i data-feather="home" class="nav-icon icon-xs me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'personil') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/personil/">
+                                <i class="fas fa-id-badge nav-icon icon-xs me-2"></i> Personil
                             </a>
                         </li>
                         <li class="nav-item">
@@ -261,6 +288,13 @@ if (!isset($_SESSION['login'])) {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/pimpinan/mutasi/">
                                 <i class="fas fa-arrow-right-arrow-left nav-icon icon-xs me-2"></i> Mutasi Jabatan
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow <?php if ($page == 'kegiatan') {
+                                                                echo 'active';
+                                                            } ?>" href="<?= base_url() ?>/view/pimpinan/kegiatan/">
+                                <i class="far fa-calendar-check nav-icon icon-xs me-2"></i> Kegiatan
                             </a>
                         </li>
                     <?php } else if ($_SESSION['level'] == 3) { ?>

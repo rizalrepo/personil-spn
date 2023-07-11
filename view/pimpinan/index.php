@@ -4,6 +4,7 @@ $page = 'dashboard';
 include_once '../layout/navhead.php';
 
 $a = $con->query("SELECT COUNT(*) AS total FROM personil")->fetch_array();
+$e = $con->query("SELECT COUNT(*) AS total FROM kegiatan")->fetch_array();
 
 $a1 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE verif = 1")->fetch_array();
 $a2 = $con->query("SELECT COUNT(*) AS total FROM izin WHERE verif != 1")->fetch_array();
@@ -27,7 +28,7 @@ $d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fet
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-3">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
             <div class="card info-card sales-card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -37,6 +38,22 @@ $d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fet
                         <div class="ps-3">
                             <h4>Data Personil</h4>
                             <span class="text-success small pt-1 fw-bold"><?= $a['total'] ?></span>
+                            <span class="text-muted small pt-2 ps-1">Total Data</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
+            <div class="card info-card sales-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape icon-md bg-light-danger text-danger rounded-2">
+                            <i class="far fa-calendar-check fs-4"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h4>Data Kegiatan</h4>
+                            <span class="text-success small pt-1 fw-bold"><?= $e['total'] ?></span>
                             <span class="text-muted small pt-2 ps-1">Total Data</span>
                         </div>
                     </div>

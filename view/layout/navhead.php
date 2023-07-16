@@ -217,7 +217,7 @@ if (!isset($_SESSION['login'])) {
                                             </small>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link <?php if (
                                                                 $page == 'mutasi'
                                                             ) {
@@ -228,18 +228,18 @@ if (!isset($_SESSION['login'])) {
                                                 Data Mutasi Jabatan
                                             </small>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'kegiatan') {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/admin/kegiatan/">
                                 <i class="nav-icon far fa-calendar-check me-2"></i> Data Kegiatan
                             </a>
-                        </li>
+                        </li> -->
                     <?php } else if ($_SESSION['level'] == 2) { ?>
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'dashboard') {
@@ -283,7 +283,7 @@ if (!isset($_SESSION['login'])) {
                                 <i class="bi bi-journal-bookmark-fill nav-icon icon-xs me-2"></i> Perintah Tugas
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'mutasi') {
                                                                 echo 'active';
                                                             } ?>" href="<?= base_url() ?>/view/pimpinan/mutasi/">
@@ -296,7 +296,7 @@ if (!isset($_SESSION['login'])) {
                                                             } ?>" href="<?= base_url() ?>/view/pimpinan/kegiatan/">
                                 <i class="far fa-calendar-check nav-icon icon-xs me-2"></i> Kegiatan
                             </a>
-                        </li>
+                        </li> -->
                     <?php } else if ($_SESSION['level'] == 3) { ?>
                         <li class="nav-item">
                             <a class="nav-link has-arrow <?php if ($page == 'dashboard') {

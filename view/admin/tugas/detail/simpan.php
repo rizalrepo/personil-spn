@@ -6,7 +6,7 @@ include '../../../../app/config.php';
 $tugas    = $_POST['id_tugas'];
 $personil   = $_POST['id_personil'];
 
-$cek = mysqli_num_rows(mysqli_query($con, "SELECT * FROM tugas_detail WHERE id_personil = '$personil'"));
+$cek = mysqli_num_rows(mysqli_query($con, "SELECT * FROM tugas_detail WHERE id_personil = '$personil' AND id_tugas = '$tugas' "));
 
 if ($cek > 0) {
     $data['hasil'] = 'duplikat';

@@ -21,7 +21,7 @@ if ($verif == 3) {
     }
 } else if ($verif == 2) {
 
-    $cek = $con->query("SELECT no_surat FROM tugas ORDER BY id_tugas DESC LIMIT 1")->fetch_array();
+    $cek = $con->query("SELECT no_surat FROM tugas ORDER BY no_surat DESC LIMIT 1")->fetch_array();
     $ex = explode('/', $cek['no_surat']);
 
     if (date('d') == '01') {

@@ -55,7 +55,7 @@ if (mysqli_connect_errno()) {
                                     <?php } else if ($d['tgl_mulai'] > date('Y-m-d')) { ?>
                                         <span class="badge bg-warning">Belum Berjalan</span>
                                     <?php } else if ($d['tgl_selesai'] < date('Y-m-d')) { ?>
-                                        <span class="badge bg-success">Program Selesai</span>
+                                        <span class="badge bg-success">Kegiatan Selesai</span>
                                     <?php } ?>
                                 </dd>
                             </dl>

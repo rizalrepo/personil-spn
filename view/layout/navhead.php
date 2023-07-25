@@ -244,7 +244,7 @@ if (!isset($_SESSION['login'])) {
                         <li class="nav-item">
                             <a class="nav-link has-arrow" href="#!" data-bs-toggle="collapse" data-bs-target="#navLaporan" aria-expanded="false" aria-controls="navLaporan">
                                 <i data-feather="file-text" class="nav-icon icon-xs me-2">
-                                </i> Laporan
+                                </i>Laporan Cetak
                             </a>
                             <div id="navLaporan" class="collapse" data-bs-parent="#sideNavbar">
                                 <ul class="nav flex-column">
@@ -252,7 +252,63 @@ if (!isset($_SESSION['login'])) {
                                         <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapPersonil">
                                             <small>
                                                 <i class="far fa-circle me-1"></i>
-                                                Data Personil
+                                                Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapAbsensi">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Rekapitulasi Absensi
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapAbsensiPersonil">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Absensi Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapIzin">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Izin Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapCuti">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Cuti Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapTugas">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Perintah Tugas
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapMutasi">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Mutasi Jabatan
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapKegiatan">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Kegiatan
                                             </small>
                                         </a>
                                     </li>
@@ -315,6 +371,80 @@ if (!isset($_SESSION['login'])) {
                                                             } ?>" href="<?= base_url() ?>/view/pimpinan/kegiatan/">
                                 <i class="far fa-calendar-check nav-icon icon-xs me-2"></i> Kegiatan
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link has-arrow" href="#!" data-bs-toggle="collapse" data-bs-target="#navLaporan" aria-expanded="false" aria-controls="navLaporan">
+                                <i data-feather="file-text" class="nav-icon icon-xs me-2">
+                                </i>Laporan Cetak
+                            </a>
+                            <div id="navLaporan" class="collapse" data-bs-parent="#sideNavbar">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapPersonil">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapAbsensi">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Rekapitulasi Absensi
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapAbsensiPersonil">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Absensi Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapIzin">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Izin Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapCuti">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Cuti Personil
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapTugas">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Perintah Tugas
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapMutasi">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Mutasi Jabatan
+                                            </small>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link" data-bs-toggle="modal" data-bs-target="#lapKegiatan">
+                                            <small>
+                                                <i class="far fa-circle me-1"></i>
+                                                Kegiatan
+                                            </small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     <?php } else if ($_SESSION['level'] == 3) { ?>
                         <li class="nav-item">

@@ -67,7 +67,7 @@ include_once '../../layout/navhead.php';
                                         <?php } else if ($row['tgl_mulai'] > date('Y-m-d')) { ?>
                                             <span class="badge bg-warning">Belum Berjalan</span>
                                         <?php } else if ($row['tgl_selesai'] < date('Y-m-d')) { ?>
-                                            <span class="badge bg-success">Program Selesai</span>
+                                            <span class="badge bg-success">Kegiatan Selesai</span>
                                         <?php } ?>
                                     </td>
                                     <td align="center" width="12%">

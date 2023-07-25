@@ -1,43 +1,41 @@
-<div class="modal fade" id="lap_diklat" tabindex="-1">
+<div class="modal fade" id="lapPersonil" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h6 class="modal-title">Laporan Data Diklat</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title"><i data-feather="file-text" class="me-2"></i>Laporan Data Personil</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="POST" target="_blank" action="<?= base_url('admin/diklat/cetak') ?>">
+                <form method="GET" target="_blank" action="<?= base_url('view/laporan/personil') ?>">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-12 mb-3">
                             <div class="form-group">
-                                <label>Dari Tanggal</label>
-                                <input type="date" class="form-control" name="tgl1">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Sampai Tanggal</label>
-                                <input type="date" class="form-control" name="tgl2">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Berdasarkan Materi</label>
-                                <select name="id_materi" class="form-control select2" style="width: 100%;">
+                                <label class="col-form-label fw-semibold">Berdasarkan Pangkat</label>
+                                <select name="pangkat" class="form-control select2" style="width: 100%;">
                                     <option value="">-- Pilih --</option>
-                                    <?php $data = $con->query("SELECT * FROM materi ORDER BY id_materi DESC"); ?>
+                                    <?php $data = $con->query("SELECT * FROM pangkat ORDER BY id_pangkat ASC"); ?>
                                     <?php foreach ($data as $row) : ?>
-                                        <option value="<?= $row['id_materi'] ?>"><?= $row['nm_materi'] ?></option>
+                                        <option value="<?= $row['id_pangkat'] ?>"><?= $row['nm_pangkat'] ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group float-right">
-                            <button type="submit" name="cetak" class="btn btn-info"><i class="fa fa-print"> </i> Cetak</button>
+                        <div class="col-12 mb-3">
+                            <div class="form-group">
+                                <label class="col-form-label fw-semibold">Berdasarkan Jabatan</label>
+                                <select name="jabatan" class="form-control select2" style="width: 100%;">
+                                    <option value="">-- Pilih --</option>
+                                    <?php $data = $con->query("SELECT * FROM jabatan ORDER BY id_jabatan ASC"); ?>
+                                    <?php foreach ($data as $row) : ?>
+                                        <option value="<?= $row['id_jabatan'] ?>"><?= $row['nm_jabatan'] ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-print"> </i> Cetak</button>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -48,89 +46,12 @@
     <!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="lap_peserta" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title">Laporan Data Peserta Diklat</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" target="_blank" action="<?= base_url('admin/peserta/cetak') ?>">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Berdasarkan Diklat</label>
-                                <select name="id_diklat" class="form-control select2" style="width: 100%;">
-                                    <option value="">-- Pilih --</option>
-                                    <?php $data = $con->query("SELECT * FROM diklat ORDER BY tgl_mulai DESC"); ?>
-                                    <?php foreach ($data as $row) : ?>
-                                        <option value="<?= $row['id_diklat'] ?>"><?= $row['tema'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Berdasarkan Asal Instansi</label>
-                                <select name="id_instansi" class="form-control select2" style="width: 100%;">
-                                    <option value="">-- Pilih --</option>
-                                    <?php $data = $con->query("SELECT * FROM instansi ORDER BY id_instansi DESC"); ?>
-                                    <?php foreach ($data as $row) : ?>
-                                        <option value="<?= $row['id_instansi'] ?>"><?= $row['nm_instansi'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group float-right">
-                            <button type="submit" name="cetak" class="btn btn-info"><i class="fa fa-print"> </i> Cetak</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<div class="modal fade" id="lap_kehadiran" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title">Laporan Data Kehadiran Peserta Diklat</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="POST" target="_blank" action="<?= base_url('admin/kehadiran/cetak') ?>">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Berdasarkan Diklat</label>
-                                <select name="id_diklat" class="form-control select2" style="width: 100%;" required>
-                                    <option value="">-- Pilih --</option>
-                                    <?php $data = $con->query("SELECT * FROM diklat ORDER BY tgl_mulai DESC"); ?>
-                                    <?php foreach ($data as $row) : ?>
-                                        <option value="<?= $row['id_diklat'] ?>"><?= $row['tema'] ?></option>
-                                    <?php endforeach ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group float-right">
-                            <button type="submit" name="cetak" class="btn btn-info"><i class="fa fa-print"> </i> Cetak</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+<script src="<?= base_url() ?>/assets/libs/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(function() {
+        $('.select2').select2({
+            dropdownParent: $('#lapPersonil')
+        });
+    });
+</script>

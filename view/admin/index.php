@@ -44,7 +44,7 @@ $d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fet
                 </div>
             </div>
         </div>
-        <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
             <div class="card info-card sales-card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -59,7 +59,7 @@ $d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fet
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
             <div class="card info-card sales-card">
                 <div class="card-body">
@@ -105,7 +105,7 @@ $d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fet
                 </div>
             </div>
         </div>
-        <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-12 mt-3">
             <div class="card info-card sales-card">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -119,7 +119,7 @@ $d2 = $con->query("SELECT COUNT(*) AS total FROM mutasi WHERE verif != 1 ")->fet
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
     <!-- row  -->
 </div>

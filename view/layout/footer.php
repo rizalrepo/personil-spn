@@ -1,6 +1,6 @@
 </div>
 </div>
-
+<?php include 'modal.php'; ?>
 <!-- Scripts -->
 <!-- Libs JS -->
 <script src="<?= base_url() ?>/assets/libs/jquery/dist/jquery.min.js"></script>

@@ -19,7 +19,7 @@ $izin = [
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label class="col-form-label fw-semibold">Berdasarkan Pangkat</label>
-                                <select name="pangkat" class="form-select select-2" style="width: 100%;">
+                                <select name="pangkat" class="form-select" id="selectPangkat" style="width: 100%;">
                                     <option value="">-- Pilih --</option>
                                     <?php $data = $con->query("SELECT * FROM pangkat ORDER BY id_pangkat ASC"); ?>
                                     <?php foreach ($data as $row) : ?>
@@ -31,7 +31,7 @@ $izin = [
                         <div class="col-12 mb-3">
                             <div class="form-group">
                                 <label class="col-form-label fw-semibold">Berdasarkan Jabatan</label>
-                                <select name="jabatan" class="form-select select-2" style="width: 100%;">
+                                <select name="jabatan" class="form-select" id="selectJabatan" style="width: 100%;">
                                     <option value="">-- Pilih --</option>
                                     <?php $data = $con->query("SELECT * FROM jabatan ORDER BY id_jabatan ASC"); ?>
                                     <?php foreach ($data as $row) : ?>
@@ -112,7 +112,7 @@ $izin = [
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label class="col-form-label fw-semibold">Personil</label>
-                            <select name="personil" class="form-select select-2" style="width: 100%;" required>
+                            <select name="personil" class="form-select" id="selectPersonil" style="width: 100%;" required>
                                 <option value="">-- Pilih --</option>
                                 <?php $data = $con->query("SELECT * FROM personil ORDER BY id_personil ASC"); ?>
                                 <?php foreach ($data as $row) : ?>
@@ -380,7 +380,7 @@ $izin = [
                     <div class="col-md-12 mt-3">
                         <div class="form-group">
                             <label class="col-form-label fw-semibold">Berdasarkan Jenis Kegiatan</label>
-                            <select name="jenis" class="form-select select-2" style="width: 100%;">
+                            <select name="jenis" class="form-select" id="selectJenis" style="width: 100%;">
                                 <option value="">-- Pilih --</option>
                                 <?php $data = $con->query("SELECT * FROM jenis_kegiatan ORDER BY id_jenis_kegiatan ASC"); ?>
                                 <?php foreach ($data as $row) : ?>
@@ -406,15 +406,18 @@ $izin = [
 
 <script>
     $(function() {
-        $('.select-2').select2({
+        $('#selectPangkat').select2({
+            dropdownParent: $('#lapPersonil')
+        });
+        $('#selectJabatan').select2({
             dropdownParent: $('#lapPersonil')
         });
 
-        $('.select-2').select2({
+        $('#selectPersonil').select2({
             dropdownParent: $('#lapAbsensiPersonil')
         });
 
-        $('.select-2').select2({
+        $('#selectJenis').select2({
             dropdownParent: $('#lapKegiatan')
         });
 

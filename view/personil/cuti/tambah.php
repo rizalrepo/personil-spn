@@ -69,7 +69,15 @@ if (isset($_POST['submit'])) {
 
     $thn = date('Y');
 
-    $cek = mysqli_num_rows(mysqli_query($con, "SELECT * FROM cuti WHERE id_personil = '$absen' AND verif = 2 AND YEAR(tgl_mulai) = '$thn'"));
+    $cek = mysqli_query($con, "SELECT COUNT(*) AS total FROM absensi WHERE id_personil = '$absen' AND YEAR(tanggal) = '$thn' AND sts = 'Cuti'")->fetch_array();
+
+    $sisa = 12 - $cek['total'];
+
+    $tgl2 = date('Y-m-d', strtotime('-1 days', strtotime($tgl_mulai)));
+    $a = date_create($tgl2);
+    $b = date_create($tgl_selesai);
+    $diff = date_diff($a, $b);
+
     $cek_tgl = mysqli_num_rows(mysqli_query($con, "SELECT * FROM absensi WHERE tanggal BETWEEN '$_POST[tgl_mulai]' AND '$_POST[tgl_selesai]' AND id_personil = '$absen'"));
     if ($cek_tgl > 0) {
         echo "
@@ -80,12 +88,12 @@ if (isset($_POST['submit'])) {
                 icon: 'error'
             });     
         </script>";
-    } else if ($cek > 1) {
+    } else if ($sisa < $diff->d) {
         echo "
         <script type='text/javascript'>
             Swal.fire({
                 title: 'Pengajuan Cuti Gagal !',
-                text:  'Pengajuan Cuti Anda sudah mencapai batas Maksimal dalam tahun ini !',
+                text:  'Pengajuan Cuti Anda tersisa $sisa Hari dalam tahun ini !',
                 icon: 'error'
             });     
         </script>";

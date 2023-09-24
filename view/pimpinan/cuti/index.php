@@ -19,7 +19,8 @@ $noverif = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif = 1 ")->f
 
         <div class="col-12">
             <div class="card card-body border border-dark-danger">
-                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-success" data-bs-toggle="modal" href="#personilCuti"><i class="fas fa-info-circle me-2"></i>Data Personil yang disetujui Cuti</a>
+                <a class="btn btn-primary mt-3" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                     Data Cuti Belum di Verifikasi <span class="fw-bold badge bg-danger"><?= $noverif['total'] ?> Data</span>
                 </a>
 
@@ -187,6 +188,96 @@ $noverif = $con->query("SELECT COUNT(*) AS total FROM cuti WHERE verif = 1 ")->f
     </div>
     <!-- row  -->
 </div>
+
+<div id="personilCuti" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="custom-width-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="custom-width-modalLabel"><i class="fas fa-info-circle me-2"></i>Data Personil yang disetujui Cuti</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table id="example2" class="table table-bordered table-hover table-striped dataTable">
+                            <thead class="bg-dark-danger">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nomor Surat</th>
+                                    <th>Data Personil</th>
+                                    <th>Keterangan</th>
+                                    <th>Tanggal</th>
+                                    <th>Verifikasi</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                $data = $con->query("SELECT * FROM cuti a LEFT JOIN personil b ON a.id_personil = b.id_personil WHERE a.verif = 2 ORDER BY a.id_cuti DESC");
+                                while ($row = $data->fetch_array()) {
+                                    $tgl1 = $row['tgl_mulai'];
+                                    $tgl2 = date('Y-m-d', strtotime('-1 days', strtotime($tgl1)));
+                                    $a = date_create($tgl2);
+                                    $b = date_create($row['tgl_selesai']);
+                                    $diff = date_diff($a, $b);
+                                ?>
+                                    <tr>
+                                        <td align="center" width="5%"><?= $no++ ?></td>
+                                        <td align="center">
+                                            <?php if ($row['verif'] == 2) { ?>
+                                                <?= $row['no_surat'] ?>
+                                                <hr class="my-1">
+                                                <a href="surat?id=<?= $row[0] ?>" target="_BLANK" class="btn bg-success text-white btn-xs" title="Surat"><i class="fas fa-envelope-open-text me-1"></i>Surat Cuti</a>
+                                            <?php } else { ?>
+                                                -
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+                                            <b>Nama</b> : <?= $row['nm_personil'] ?>
+                                            <hr class="my-1">
+                                            <b>NRP / NIP</b> : <?= $row['nrp_nip'] ?>
+                                            <hr class="my-1">
+                                        </td>
+                                        <td align="center"><?= $row['ket'] ?></td>
+                                        <td align="center">
+                                            <?php if ($row['tgl_mulai'] == $row['tgl_selesai']) {
+                                                echo tgl($row['tgl_mulai']);
+                                            } else {
+                                                echo tgl($row['tgl_mulai']) . ' s/d ' . tgl($row['tgl_selesai']);
+                                            } ?>
+                                            <hr class="my-1">
+                                            Lama cuti :
+                                            <?php if ($diff->y != 0) {
+                                                echo $diff->y  . ' Tahun ';
+                                            }
+                                            if ($diff->m != 0) {
+                                                echo $diff->m . ' Bulan ';
+                                            } ?>
+                                            <?= $diff->d ?> Hari
+                                        </td>
+                                        <td align="center">
+                                            <?php if ($row['verif'] == 1) { ?>
+                                                <span class="btn btn-xs bg-dark-warning text-white"><i class="fas fa-clock me-1"></i>Menunggu</span>
+                                            <?php } else if ($row['verif'] == 2) { ?>
+                                                <span class="btn btn-xs btn-success"><i class="fas fa-check-circle me-1"></i>Disetujui</span>
+                                            <?php } else if ($row['verif'] == 3) { ?>
+                                                <span class="btn btn-xs btn-danger"><i class="fas fa-times-circle me-1"></i>Ditolak</span>
+                                                <hr class="my-1">
+                                                Karena <?= $row['tolak'] ?>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 <?php

@@ -1,11 +1,14 @@
 .btn-xs {
-    --bs-btn-padding-y: .25rem;
-    --bs-btn-padding-x: .5rem;
-    --bs-btn-font-size: .65rem;
+    --bs-btn-padding-y: 0.25rem;
+    --bs-btn-padding-x: 0.5rem;
+    --bs-btn-font-size: 0.65rem;
     font-weight: 510;
 }
 
-div.table-responsive>div.dataTables_wrapper>div.row>div[class^=col-]:last-child {
+div.table-responsive
+    > div.dataTables_wrapper
+    > div.row
+    > div[class^="col-"]:last-child {
     padding-right: 0;
     padding-left: 0;
     margin-bottom: 0.5rem;
@@ -18,16 +21,21 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     margin-bottom: -0.48rem;
 }
 
-#example1 thead th, .example2 thead th {
+#example1 thead th,
+.example2 thead th {
     color: white;
     text-align: center;
 }
 
-#example1 tbody td, .example2 tbody td {
+#example1 tbody td,
+.example2 tbody td,
+#example2 tbody td {
     color: black !important;
 }
 
-#example1 tbody tr td, .example2 thead tr td{
+#example1 tbody tr td,
+.example2 thead tr td,
+#example2 tbody tr td {
     color: black;
     font-size: 13px;
     padding: 6px;
@@ -42,13 +50,16 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     color: black !important;
 }
 
-#tbl thead tr td{
+#tbl thead tr td {
     color: black;
     font-size: 13px;
     padding: 6px;
 }
 
-.form-horizontal input, .form-horizontal select, .form-horizontal option, .form-horizontal textarea {
+.form-horizontal input,
+.form-horizontal select,
+.form-horizontal option,
+.form-horizontal textarea {
     color: black !important;
 }
 
